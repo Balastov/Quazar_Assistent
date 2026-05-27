@@ -11,6 +11,13 @@ See the project plan for full architecture details. This document summarizes the
 - **workers** — Celery tasks for ingestion and Confluence sync
 - **infra** — Docker Compose, Nginx
 
+## Supported file formats (ingestion)
+
+- **XLSX/XLSM** — openpyxl, sheets as markdown tables
+- **Images** (jpg, png, gif, webp, bmp, tiff) — Tesseract OCR; optional GPT-4o vision fallback
+- **MS Project** — `.mpp` via MPXJ+Java, `.mpx` and MSPDI `.xml` via native parsers
+- PDF, DOCX, TXT, HTML — existing parsers
+
 ## Data flow
 
 1. User uploads file → MinIO → Celery ingest → chunks + embeddings → pgvector

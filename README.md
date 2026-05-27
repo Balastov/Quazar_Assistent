@@ -6,7 +6,7 @@
 
 - Чат в стиле QwenChat со streaming-ответами и цитатами
 - Проекты с бесконечной вложенностью папок
-- Загрузка файлов (PDF, DOCX, TXT, HTML) и RAG-поиск
+- Загрузка файлов (PDF, DOCX, TXT, HTML, **XLSX**, **изображения**, **MS Project**) и RAG-поиск
 - Интеграция с Confluence (синхронизация spaces)
 - Выбор источника: файлы / Confluence / оба
 - Несколько LLM-провайдеров через единый API
@@ -52,6 +52,18 @@ workers/           Celery background tasks
 infra/             Docker Compose, Nginx
 docs/              Documentation
 ```
+
+## Поддерживаемые форматы файлов
+
+| Формат | Расширения | Способ извлечения |
+|--------|------------|-------------------|
+| Excel | `.xlsx`, `.xlsm` | openpyxl → markdown-таблицы |
+| Изображения | `.jpg`, `.png`, `.gif`, `.webp`, `.bmp`, `.tiff` | Tesseract OCR; при пустом OCR — GPT-4o vision (если задан `OPENAI_API_KEY`) |
+| MS Project | `.mpp` | MPXJ (Java) |
+| MS Project | `.mpx`, `.xml` | Нативный парсер MPX / MSPDI XML |
+| Документы | `.pdf`, `.docx`, `.txt`, `.html` | как ранее |
+
+Для OCR локально: `brew install tesseract tesseract-lang` (macOS) или пакеты `tesseract-ocr` в Linux.
 
 ## API
 

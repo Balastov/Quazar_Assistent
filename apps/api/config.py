@@ -46,6 +46,11 @@ class Settings(BaseSettings):
     oidc_client_id: str = ""
     oidc_client_secret: str = ""
 
+    ocr_language: str = "rus+eng"
+    ingest_vision_fallback: bool = True
+    ingest_vision_model: str = "gpt-4o-mini"
+    mpxj_jar_path: str = "/app/lib/mpxj.jar"
+
     @property
     def cors_origins_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
