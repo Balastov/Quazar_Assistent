@@ -65,6 +65,12 @@ docs/              Documentation
 
 Для OCR локально: `brew install tesseract tesseract-lang` (macOS) или пакеты `tesseract-ocr` в Linux.
 
+## Деплой на ВМ
+
+Автодеплой при push в `main`: см. [docs/deploy.md](docs/deploy.md).
+
+Кратко: настройте секреты `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`, `DEPLOY_PATH` в GitHub Actions.
+
 ## API
 
 Документация: http://localhost:8000/docs
